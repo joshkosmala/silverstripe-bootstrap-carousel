@@ -18,7 +18,10 @@ Manual Installation:
 - Run http://yoursiteurl/dev/build
 
 Composer Installtion:
-- Not active yet
+
+=====================================================================
+	composer require sajansharmanz/silverstripe-bootstrap-carousel
+=====================================================================
 
 ## Usage
 Once successfully installed we are ready to implement the Carousel to a page
