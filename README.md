@@ -23,6 +23,8 @@ Composer Installtion:
 	composer require sajansharmanz/silverstripe-bootstrap-carousel
 =====================================================================
 
+- Run http://yoursiteurl/dev/build
+
 ## Usage
 Once successfully installed we are ready to implement the Carousel to a page
 
