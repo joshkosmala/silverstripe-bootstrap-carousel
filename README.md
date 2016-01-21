@@ -15,7 +15,7 @@ Manual Installation:
 - Locate folder inside Zip File
 - Rename folder to "Carousel" - without quotations
 - Place this Carousel folder into your projects root directory
-- Run http://yoursiteurl/dev/build
+- Run http://yoursiteurl/dev/build?flush=1
 
 Composer Installtion:
 
@@ -23,7 +23,7 @@ Composer Installtion:
 	composer require sajansharmanz/silverstripe-bootstrap-carousel
 =====================================================================
 
-- Run http://yoursiteurl/dev/build
+- Run http://yoursiteurl/dev/build?flush=1
 
 ## Usage
 Once successfully installed we are ready to implement the Carousel to a page
