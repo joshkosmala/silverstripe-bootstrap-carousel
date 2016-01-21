@@ -1,6 +1,4 @@
-=============================================
-	Silverstripe Bootstrap Carousel Module
-=============================================
+## Silverstripe Bootstrap Carousel Module
 
 ## Description
 This module is used to implement a Bootstrap Carousel to a Silverstripe Project and be able to manage the images displayed in it from the CMS Admin interface
