@@ -1,0 +1,24 @@
+{
+  "name": "SajanSharmaNZ/silverstripe-bootstrap-carousel",
+	"description": "This module is used to implement a Bootstrap Carousel to a Silverstripe Project and be able to manage the images displayed in it from the CMS Admin interface",
+	"type": "silverstripe-module",
+	"homepage": "http://github.com/SajanSharmaNZ/silverstripe-bootstrap-carousel",
+	"keywords": ["silverstripe", "bootstrap", "carousel"],
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Sajan Sharma",
+			"email": "sajansharmanz@gmail.com"
+		}
+	],
+	"support": {
+		"issues": "http://github.com/SajanSharmaNZ/silverstripe-bootstrap-carousel"
+	},
+	"require": {
+		"silverstripe/framework": ">=3.1",
+		"silverstripe/cms": ">=3.1", 
+	},
+	"extra": {
+		"installer-name": "carousel"
+	}
+}
