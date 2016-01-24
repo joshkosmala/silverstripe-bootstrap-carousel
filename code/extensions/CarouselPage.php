@@ -11,7 +11,7 @@ class CarouselPage extends DataExtension {
 
 	// Has Many Relationship to Carousel Images
 	private static $has_many = array(
-		'Images' => 'CarouselImage',
+		'CarouselElements' => 'CarouselImage',
 	);
 
 	// Default Settings for Carousel
@@ -35,12 +35,12 @@ class CarouselPage extends DataExtension {
 				->addComponent($add_button);
 
 			// Table to Display Current Carousel Images
-			$carousel_table = GridField::create('Images', false, $this->owner->Images()->sort('Sort ASC'), $grid_config);
+			$carousel_table = GridField::create('CarouselElements', false, $this->owner->CarouselElements()->sort('Sort ASC'), $grid_config);
 
 			// Creates a tab on CMS to manage Carousel on
 			$fields->addFieldToTab('Root.Carousel', $carousel_table);
 		} else {
-			$fields->removeByName('Images');
+			$fields->removeByName('CarouselElements');
 		}
 
 		// By default carousel settings do not appear
@@ -73,6 +73,6 @@ class CarouselPage extends DataExtension {
 	}
 
 	public function CarouselImages() {
-		return $this->owner->renderWith('CarouselImages', array('Images' => $this->owner->Images()));
+		return $this->owner->renderWith('CarouselImages', array('CarouselElements' => $this->owner->CarouselElements()));
 	}
 }

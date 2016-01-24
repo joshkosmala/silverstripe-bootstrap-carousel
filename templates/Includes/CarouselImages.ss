@@ -2,11 +2,11 @@
 <% require javascript("carousel/js/jquery.min.js") %>
 <% require javascript("carousel/js/bootstrap.min.js") %>
 
-<% if Images.Exists %>
+<% if CarouselElements.Exists %>
 	<section class="image-carousel">
 		<div id="carousel" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
-				<% loop $Images %>
+				<% loop $CarouselElements %>
 					<div class="item">
 						$SizedImage
 						<% if $Caption %>
