@@ -22,12 +22,21 @@ class CarouselImage extends DataObject {
 		'Caption' => 'Caption'
 	);
 
-	private static $field_labels = array(
-		'LinkTargetBlank' => 'Open the link in a new tab?'
-	);
-
 	// Default Sort Setting
 	private static $default_sort = "Sort ASC";
+
+	public function fieldLabels($include_relations=true)
+	{
+		$labels = array(
+			'Caption' => _t('CarouselImage.CAPTION', 'Caption'),
+			'Sort' => _t('CarouselImage.SORT', 'Sort'),
+			'Link' => _t('CarouselImage.LINK', 'Link'),
+			'LinkTargetBlank' => _t('CarouselImage.LINKTARGETBLANK', 'Open the link in a new tab?'),
+			'Image' => _t('CarouselImage.IMAGE', 'Image'),
+		);
+		if (!$include_relations) unset($labels['Image']);
+		return $labels;
+	}
 
 	// Get image size according to settings tab information
 	public function getSizedImage() {
@@ -46,7 +55,7 @@ class CarouselImage extends DataObject {
 		$fields = parent::getCMSFields();
 
 		$fields->removeByName('ParentID');
-		$fields->dataFieldByName('Link')->setAttribute('placeholder', 'http://')->setDescription('If empty, clicking the image does nothing. You can use absolute or canonical URLs here.');
+		$fields->dataFieldByName('Link')->setAttribute('placeholder', 'http://')->setDescription(_t('CarouselImage.LINKDESCRIPTION','If empty, clicking the image does nothing. You can use absolute or canonical URLs here.'));
 
 		return $fields;
 	}
@@ -55,7 +64,7 @@ class CarouselImage extends DataObject {
 		if($this->Image()) {
 			return $this->Image()->CMSThumbnail();
 		} else {
-			return '(No Image)';
+			return _t('CarouselImage.NOIMAGE','(No Image)');
 		}
 	}
 }
