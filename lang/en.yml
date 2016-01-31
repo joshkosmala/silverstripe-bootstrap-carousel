@@ -1,0 +1,21 @@
+en:
+  CarouselImage:
+    CAPTION: Caption
+    IMAGE: Image
+    LINK: Link
+    LINKDESCRIPTION: 'If empty, clicking the image does nothing. You can use absolute or canonical URLs here.'
+    LINKTARGETBLANK: 'Open the link in a new tab?'
+    NOIMAGE: '(No Image)'
+    PLURALNAME: 'Carousel Images'
+    SINGULARNAME: 'Carousel Image'
+    SORT: Sort
+  CarouselPage:
+    ADDCAROUSEL: 'Add carousel to this page?'
+    ADDIMAGE: 'Add Image'
+    CAROUSELTABLABEL: Carousel
+    DISPLAYCAROUSELONTHISPAGE: 'Display carousel on this page'
+    HEIGHT: Height
+    NEXT: Next
+    PREVIOUS: Previous
+    TITLE: Carousel
+    WIDTH: Width

@@ -26,7 +26,7 @@ class CarouselPage extends DataExtension {
 		if($this->owner->ShowCarousel) {
 			// Create Add Image Button
 			$add_button = new GridFieldAddNewButton('toolbar-header-left');
-			$add_button->setButtonName('Add Image');
+			$add_button->setButtonName(_t('CarouselPage.ADDIMAGE','Add Image'));
 
 			// Add Carousel Editor
 			$grid_config = GridFieldConfig_RecordEditor::create()
@@ -38,7 +38,7 @@ class CarouselPage extends DataExtension {
 			$carousel_table = GridField::create('CarouselElements', false, $this->owner->CarouselElements()->sort('Sort ASC'), $grid_config);
 
 			// Creates a tab on CMS to manage Carousel on
-			$fields->addFieldToTab('Root.Carousel', $carousel_table);
+			$fields->addFieldToTab('Root.'._t('CarouselPage.CAROUSELTABLABEL', 'Carousel'), $carousel_table);
 		} else {
 			$fields->removeByName('CarouselElements');
 		}
@@ -55,20 +55,20 @@ class CarouselPage extends DataExtension {
 	public function updateSettingsFields(FieldList $fields) {
 		
 		// Produce following message by default
-		$message = '<p>Display carousel on this page</p>';
+		$message = '<p>'._t('CarouselPage.DISPLAYCAROUSELONTHISPAGE', 'Display carousel on this page').'</p>';
 		$fields->addFieldToTab('Root.Settings', LiteralField::create("CarouselMessage", $message));
 
 		// Display option to request carousel on settings tab
 		$carousel = FieldGroup::create(
-			CheckboxField::create('ShowCarousel', 'Add carousel to this page?')
-		)->setTitle('Carousel');
+			CheckboxField::create('ShowCarousel', _t('CarouselPage.ADDCAROUSEL','Add carousel to this page?'))
+		)->setTitle(_t('CarouselPage.TITLE','Carousel'));
 
 		$fields->addFieldToTab('Root.Settings', $carousel);
 
 		// If user selects to add carousel add additional settings
 		if($this->owner->ShowCarousel) {
-			$fields->addFieldToTab('Root.Settings', NumericField::create('CarouselWidth', 'Width'));
-			$fields->addFieldToTab('Root.Settings', NumericField::create('CarouselHeight', 'Height'));
+			$fields->addFieldToTab('Root.Settings', NumericField::create('CarouselWidth', _t('CarouselPage.WIDTH','Width')));
+			$fields->addFieldToTab('Root.Settings', NumericField::create('CarouselHeight', _t('CarouselPage.HEIGHT','Height')));
 		}
 	}
 
