@@ -8,12 +8,16 @@
 			<div class="carousel-inner" role="listbox">
 				<% loop $CarouselElements %>
 					<div class="item">
+						<% if $Link %>
+							<a href="$Link.XML"<% if $LinkTargetBlank %> target="_blank"<% end_if %>>
+						<% end_if %>
 						$SizedImage
 						<% if $Caption %>
 							<div class="carousel-caption">
 								$Caption.RAW
 							</div>
 						<% end_if %>
+						<% if $Link %></a><% end_if %>
 					</div>
 				<% end_loop %>
 			</div>
