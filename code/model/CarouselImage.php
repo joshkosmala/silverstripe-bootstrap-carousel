@@ -5,7 +5,9 @@ class CarouselImage extends DataObject {
 	// Database Fields for Image Information
 	private static $db = array(
 		'Caption' => "Varchar",
-		'Sort' => 'Int'
+		'Sort' => 'Int',
+		'Link' => 'Varchar(255)',
+		'LinkTargetBlank' => 'Boolean',
 	);
 
 	// Has One Relationships
@@ -18,6 +20,10 @@ class CarouselImage extends DataObject {
 	private static $summary_fields = array(
 		'Thumbnail' => 'Image',
 		'Caption' => 'Caption'
+	);
+
+	private static $field_labels = array(
+		'LinkTargetBlank' => 'Open the link in a new tab?'
 	);
 
 	// Default Sort Setting
@@ -40,6 +46,7 @@ class CarouselImage extends DataObject {
 		$fields = parent::getCMSFields();
 
 		$fields->removeByName('ParentID');
+		$fields->dataFieldByName('Link')->setAttribute('placeholder', 'http://')->setDescription('If empty, clicking the image does nothing. You can use absolute or canonical URLs here.');
 
 		return $fields;
 	}
