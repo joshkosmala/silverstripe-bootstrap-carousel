@@ -5,6 +5,11 @@
 <% if CarouselElements.Exists %>
 	<section class="image-carousel">
 		<div id="carousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<% loop $CarouselElements %>
+					<li data-target="#carousel" data-slide-to="$Pos(0)" class="indicator-pos"></li>
+				<% end_loop %>
+			</ol>
 			<div class="carousel-inner" role="listbox">
 				<% loop $CarouselElements %>
 					<div class="item">
@@ -36,5 +41,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#carousel').find('.item').first().addClass('active');
+		$('#carousel').find('.indicator-pos').first().addClass('active');
 	});
 </script>
