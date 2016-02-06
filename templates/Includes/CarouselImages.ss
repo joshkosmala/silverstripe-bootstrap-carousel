@@ -1,5 +1,4 @@
 <% require css("carousel/css/bootstrap.min.css") %>
-<% require css("carousel/css/carousel-custom.css") %>
 <% require javascript("carousel/js/jquery.min.js") %>
 <% require javascript("carousel/js/bootstrap.min.js") %>
 
