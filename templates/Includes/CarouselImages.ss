@@ -2,7 +2,6 @@
 <% require css("carousel/css/carousel-custom.css") %>
 <% require javascript("carousel/js/jquery.min.js") %>
 <% require javascript("carousel/js/bootstrap.min.js") %>
-<% require javascript("carousel/js/jquery.touch.min.js") %>
 
 <% if CarouselElements.Exists %>
 	<section class="image-carousel">
@@ -44,12 +43,5 @@
 	$(document).ready(function() {
 		$('#carousel').find('.item').first().addClass('active');
 		$('#carousel').find('.indicator-pos').first().addClass('active');
-
-		$('#carousel').swiperight(function() {
-			$(this).carousel('prev');
-		});
-		$('#carousel').swipeleft(function() {
-			$(this).carousel('next');
-		});
 	});
 </script>
