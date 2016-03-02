@@ -24,18 +24,8 @@ class CarouselPage extends DataExtension {
 	public function updateCMSFields(Fieldlist $fields) {
 		// If Users Requests Carousel On Page
 		if($this->owner->ShowCarousel) {
-			// Create Add Image Button
-			$add_button = new GridFieldAddNewButton('toolbar-header-left');
-			$add_button->setButtonName(_t('CarouselPage.ADDIMAGE','Add Image'));
-
-			// Add Carousel Editor
-			$grid_config = GridFieldConfig_RecordEditor::create()
-				->removeComponentsByType('GridFieldAddNewButton')
-				->removeComponentsByType('GridFieldFilterHeader')
-				->addComponent($add_button);
-
 			// Table to Display Current Carousel Images
-			$carousel_table = GridField::create('CarouselElements', false, $this->owner->CarouselElements()->sort('Sort ASC'), $grid_config);
+			$carousel_table = GridField::create('CarouselElements', false, $this->owner->CarouselElements()->sort('Sort ASC'), GridFieldConfig_RecordEditor::create());
 
 			// Creates a tab on CMS to manage Carousel on
 			$fields->addFieldToTab('Root.'._t('CarouselPage.CAROUSELTABLABEL', 'Carousel'), $carousel_table);
@@ -53,12 +43,7 @@ class CarouselPage extends DataExtension {
 
 	// Add Carousel Settings to Page Settings Tab
 	public function updateSettingsFields(FieldList $fields) {
-		
-		// Produce following message by default
-		$message = '<p>'._t('CarouselPage.DISPLAYCAROUSELONTHISPAGE', 'Display carousel on this page').'</p>';
-		$fields->addFieldToTab('Root.Settings', LiteralField::create("CarouselMessage", $message));
 
-		// Display option to request carousel on settings tab
 		$carousel = FieldGroup::create(
 			CheckboxField::create('ShowCarousel', _t('CarouselPage.ADDCAROUSEL','Add carousel to this page?'))
 		)->setTitle(_t('CarouselPage.TITLE','Carousel'));
@@ -72,6 +57,7 @@ class CarouselPage extends DataExtension {
 		}
 	}
 
+	// Get carousel images to render on page
 	public function CarouselImages() {
 		return $this->owner->renderWith('CarouselImages', array('CarouselElements' => $this->owner->CarouselElements()));
 	}

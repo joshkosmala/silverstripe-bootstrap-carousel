@@ -6,14 +6,14 @@ class CarouselImage extends DataObject {
 	private static $db = array(
 		'Caption' => "Varchar",
 		'Sort' => 'Int',
-		'Link' => 'Varchar(255)',
 		'LinkTargetBlank' => 'Boolean',
 	);
 
 	// Has One Relationships
 	private static $has_one = array(
 		'Parent' => 'Page',
-		'Image' => 'Image'
+		'Image' => 'Image',
+		'LinkedPage' => 'SiteTree',
 	);
 
 	// Summary Fields when displaying Carousel Content
@@ -25,16 +25,17 @@ class CarouselImage extends DataObject {
 	// Default Sort Setting
 	private static $default_sort = "Sort ASC";
 
-	public function fieldLabels($include_relations=true)
-	{
+	public function fieldLabels($includerelations = true) {
 		$labels = array(
 			'Caption' => _t('CarouselImage.CAPTION', 'Caption'),
 			'Sort' => _t('CarouselImage.SORT', 'Sort'),
-			'Link' => _t('CarouselImage.LINK', 'Link'),
+			'LinkedPage' => 'Link',
 			'LinkTargetBlank' => _t('CarouselImage.LINKTARGETBLANK', 'Open the link in a new tab?'),
 			'Image' => _t('CarouselImage.IMAGE', 'Image'),
 		);
-		if (!$include_relations) unset($labels['Image']);
+		if (!$include_relations) {
+			unset($labels['Image']);
+		}
 		return $labels;
 	}
 
@@ -55,7 +56,9 @@ class CarouselImage extends DataObject {
 		$fields = parent::getCMSFields();
 
 		$fields->removeByName('ParentID');
-		$fields->dataFieldByName('Link')->setAttribute('placeholder', 'http://')->setDescription(_t('CarouselImage.LINKDESCRIPTION','If empty, clicking the image does nothing. You can use absolute or canonical URLs here.'));
+
+		$field_order = array('Caption', 'Sort', 'LinkedPageID', 'LinkTargetBlank', 'Image');
+		$fields->changeFieldOrder($field_order);
 
 		return $fields;
 	}

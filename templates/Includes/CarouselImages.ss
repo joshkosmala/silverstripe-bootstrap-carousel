@@ -14,8 +14,8 @@
 			<div class="carousel-inner" role="listbox">
 				<% loop $CarouselElements %>
 					<div class="item">
-						<% if $Link %>
-							<a href="$Link.XML"<% if $LinkTargetBlank %> target="_blank"<% end_if %>>
+						<% if $LinkedPage %>
+							<a href="$LinkedPage.Link"<% if $LinkTargetBlank %> target="_blank"<% end_if %>>
 						<% end_if %>
 						$SizedImage
 						<% if $Caption %>
