@@ -33,7 +33,7 @@ class CarouselImage extends DataObject {
 			'LinkTargetBlank' => _t('CarouselImage.LINKTARGETBLANK', 'Open the link in a new tab?'),
 			'Image' => _t('CarouselImage.IMAGE', 'Image'),
 		);
-		if (!$include_relations) {
+		if (!$includerelations) {
 			unset($labels['Image']);
 		}
 		return $labels;
