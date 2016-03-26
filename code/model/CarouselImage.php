@@ -57,6 +57,8 @@ class CarouselImage extends DataObject {
 
 		$fields->removeByName('ParentID');
 
+		$fields->insertAfter('Sort', new TreeDropdownField('LinkedPageID', 'Linked Page', 'SiteTree'));
+
 		$field_order = array('Caption', 'Sort', 'LinkedPageID', 'LinkTargetBlank', 'Image');
 		$fields->changeFieldOrder($field_order);
 
