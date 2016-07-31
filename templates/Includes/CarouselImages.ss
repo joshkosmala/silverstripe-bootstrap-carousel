@@ -1,5 +1,5 @@
 <% if CarouselElements.Exists %>
-<section id="homepage-carousel" class="carousel slide" data-ride="carousel">
+<section id="carousel" class="carousel slide" data-ride="carousel">
 
     <ol class="carousel-indicators">
         <% loop $CarouselElements %>
@@ -26,20 +26,20 @@
         <% end_loop %>
     </div>
 
-    <!-- <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only"><%t CarouselPage.PREVIOUS 'Previous' %></span>
       </a>
       <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only"><%t CarouselPage.NEXT 'Next' %></span>
-      </a> -->
+      </a>
 </section>
 <% end_if %>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#homepage-carousel').find('.item').first().addClass('active');
-		$('#homepage-carousel').find('.indicator-pos').first().addClass('active');
+		$('carousel').find('.item').first().addClass('active');
+		$('carousel').find('.indicator-pos').first().addClass('active');
 	});
 </script>
