@@ -2,74 +2,114 @@
 
 class CarouselImage extends DataObject {
 
-	// Database Fields for Image Information
-	private static $db = array(
-		'Caption' => "Varchar",
-		'Sort' => 'Int',
-		'LinkTargetBlank' => 'Boolean',
-	);
+    /**
+     * Database Fields
+     *
+     * @var Array
+     */
+    private static $db = array(
+        'Caption' => 'Varchar(95)',
+        'ButtonText' => 'Varchar',
+        'Sort' => 'Int',
+        'LinkTargetBlank' => 'Boolean'
+    );
 
-	// Has One Relationships
-	private static $has_one = array(
-		'Parent' => 'Page',
-		'Image' => 'Image',
-		'LinkedPage' => 'SiteTree',
-	);
+    /**
+     * Relationship - Has One
+     *
+     * @var Array
+     */
+    private static $has_one = array(
+        'Parent' => 'Page',
+        'Image' => 'Image',
+        'LinkedPage' => 'SiteTree'
+    );
 
-	// Summary Fields when displaying Carousel Content
-	private static $summary_fields = array(
-		'Thumbnail' => 'Image',
-		'Caption' => 'Caption'
-	);
+    /**
+     * Summary Fields
+     *
+     * @var Array
+     */
+    private static $summary_fields = array(
+        'Thumbnail' => 'Image',
+        'Caption' => 'Caption'
+    );
 
-	// Default Sort Setting
-	private static $default_sort = "Sort ASC";
+    /**
+     * Default Sort
+     *
+     * @var String
+     */
+    private static $default_sort = 'Sort ASC';
 
-	public function fieldLabels($includerelations = true) {
-		$labels = array(
-			'Caption' => _t('CarouselImage.CAPTION', 'Caption'),
-			'Sort' => _t('CarouselImage.SORT', 'Sort'),
-			'LinkedPage' => 'Link',
-			'LinkTargetBlank' => _t('CarouselImage.LINKTARGETBLANK', 'Open the link in a new tab?'),
-			'Image' => _t('CarouselImage.IMAGE', 'Image'),
-		);
-		if (!$includerelations) {
-			unset($labels['Image']);
-		}
-		return $labels;
-	}
+    /**
+     * getCMSFields
+     *
+     * @var Array
+     */
+    public function getCMSFields() {
+        $fields = parent::getCMSFields();
 
-	// Get image size according to settings tab information
-	public function getSizedImage() {
-		$width = $this->Parent()->CarouselWidth;
-		$height = $this->Parent()->CarouselHeight;
+        $fields->removeByName('ParentID');
+        $fields->removeByName('Caption');
+        $fields->removeByName('ButtonText');
+        $fields->removeByName('Sort');
+        $fields->removeByName('LinkedPageID');
+        $fields->removeByName('LinkTargetBlank');
+        $fields->removeByName('Image');
 
-		if($width && $height) {
-			return $this->Image()->croppedImage($width, $height);
-		} else {
-			return false;
-		}
-	}
+        $fields->addFieldsToTab('Root.Main', array(
+            TextareaField::create(
+                'Caption',
+                'Caption'
+            ),
 
-	// Removes Parent ID info from table that manages carousel
-	public function getCMSFields() {
-		$fields = parent::getCMSFields();
+            TextField::create(
+                'ButtonText',
+                'Button Text'
+            )->setRightTitle('CTA Button Text (eg. Call us now)'),
 
-		$fields->removeByName('ParentID');
+            TreeDropdownField::create(
+                'LinkedPageID',
+                'Linked Page',
+                'SiteTree'
+            )->setRightTitle('Page your CTA Button will go too (eg. Contact Us)'),
 
-		$fields->insertAfter('Sort', new TreeDropdownField('LinkedPageID', 'Linked Page', 'SiteTree'));
+            DropdownField::create(
+                'LinkTargetBlank',
+                'Open link in new page?',
+                array(
+                    '0' => 'No',
+                    '1' => 'Yes'
+                )
+            ),
 
-		$field_order = array('Caption', 'Sort', 'LinkedPageID', 'LinkTargetBlank', 'Image');
-		$fields->changeFieldOrder($field_order);
+            UploadField::create(
+                'Image',
+                'Image'
+            )
+            ->setFolderName('carousel-images'),
 
-		return $fields;
-	}
+            TextField::create(
+                'Sort',
+                'Sort ID'
+            )->setRightTitle('The position of image in carousel (eg. 1 = First)')
 
-	public function getThumbnail() {
-		if($this->Image()) {
-			return $this->Image()->CMSThumbnail();
-		} else {
-			return _t('CarouselImage.NOIMAGE','(No Image)');
-		}
-	}
+        ));
+
+        return $fields;
+    }
+
+    /**
+     * CMSThumbnail
+     *
+     * @return Image OR Text
+     */
+    public function getThumbnail() {
+    	if($this->Image()) {
+    		return $this->Image()->CMSThumbnail();
+    	} else {
+    		return _t('CarouselImage.NOIMAGE','(No Image)');
+    	}
+    }
 }

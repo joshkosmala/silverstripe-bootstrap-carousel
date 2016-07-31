@@ -1,5 +1,8 @@
 # SilverStripe Bootstrap Carousel Change Log
 
+# 1.1.0
+* Big changes that provide developer/designer more power of customization. Make integration easier and module more lighter
+
 ## 1.0.9
 * Fixed TreeDropdownField issue
 

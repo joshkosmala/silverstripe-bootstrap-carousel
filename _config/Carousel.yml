@@ -1,3 +1,6 @@
+---
+Name: Bootstrap Carousel
+---
 Page:
   extensions:
-    - CarouselPage
+    - 'CarouselExtension'
