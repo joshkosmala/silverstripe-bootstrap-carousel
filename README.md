@@ -50,7 +50,7 @@ Adding Images to Carousel:
 
 Adding Carousel to Template: Now that you have added a carousel to a page, and provided it with images, we must do one last step for it to display on the page.
 
-- We must add `<% include Carousel Images` to the Page Type (eg. Page.ss, HomePage.ss, etc) that you are trying to display the carousel on
+- We must add `<% include CarouselImages %>` to the Page Type (eg. Page.ss, HomePage.ss, etc) that you are trying to display the carousel on
 
 ## License
 This module is available under the BSD 3-clause
