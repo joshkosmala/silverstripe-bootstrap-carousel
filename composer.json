@@ -19,8 +19,8 @@
 		"issues": "http://github.com/sajansharmanz/silverstripe-bootstrap-carousel"
 	},
 	"require": {
-		"silverstripe/framework": "3.4.0",
-		"silverstripe/cms": "3.4.0"
+		"silverstripe/framework": ">=3.4.0",
+		"silverstripe/cms": ">=3.4.0"
 	},
 	"extra": {
 		"installer-name": "carousel"
