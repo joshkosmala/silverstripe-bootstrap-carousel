@@ -19,9 +19,9 @@ Manual Installation:
 
 Composer Installtion:
 
-=====================================================================
-	composer require sajansharmanz/silverstripe-bootstrap-carousel
-=====================================================================
+
+`composer require sajansharmanz/silverstripe-bootstrap-carousel`
+
 
 - Run http://yoursiteurl/dev/build?flush=1
 
