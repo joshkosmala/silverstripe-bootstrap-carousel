@@ -37,9 +37,4 @@
 </section>
 <% end_if %>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#carousel').find('.item').first().addClass('active');
-		$('#carousel').find('.indicator-pos').first().addClass('active');
-	});
-</script>
+
