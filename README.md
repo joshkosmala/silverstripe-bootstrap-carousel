@@ -52,6 +52,17 @@ Adding Carousel to Template: Now that you have added a carousel to a page, and p
 
 - We must add `<% include CarouselImages %>` to the Page Type (eg. Page.ss, HomePage.ss, etc) that you are trying to display the carousel on
 
+- We must also add the following lines to the end of our Page Type before the closing _body_ tag. This will use JQuery to add the active class to the first _item_ in the carousel
+```
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#carousel').find('.item').first().addClass('active');
+		$('#carousel').find('.indicator-pos').first().addClass('active');
+	});
+</script>
+```
+
+
 ## License
 This module is available under the BSD 3-clause
 
