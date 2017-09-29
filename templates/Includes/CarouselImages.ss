@@ -19,7 +19,7 @@
                     </p>
                 <% end_if %>
                 <% if $LinkedPage && $ButtonText %>
-                <a href="$LinkedPage.Link">$ButtonText.RAW</a>
+                <a href="$LinkedPage.Link" class="btn-lg btn-primary">$ButtonText.RAW</a>
                 <% end_if %>
             </div>
         </div>
